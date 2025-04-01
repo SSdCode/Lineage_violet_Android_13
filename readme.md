@@ -1,100 +1,145 @@
-# Clone device tree
+Here’s a proper `README.md` file that you can use for your repository. It provides a comprehensive guide for others to follow and replicate the steps for setting up the same environment:
 
-samir@samir-OMEN-by-HP-Gaming-Laptop-16-wf1xxx:~/AOSP/Redmi note 7 pro/Android 13 Lineage 20$ git clone https://github.com/LineageOS/android_device_xiaomi_violet.git -b lineage-20 device/xiaomi/violet
-Cloning into 'device/xiaomi/violet'...
-remote: Enumerating objects: 20139, done.
-remote: Counting objects: 100% (2688/2688), done.
-remote: Compressing objects: 100% (1000/1000), done.
-remote: Total 20139 (delta 1310), reused 2655 (delta 1287), pack-reused 17451 (from 1)
-Receiving objects: 100% (20139/20139), 20.26 MiB | 3.07 MiB/s, done.
-Resolving deltas: 100% (12647/12647), done.
+---
 
-//dependency for device/xiaomi/violet
-samir@samir-OMEN-by-HP-Gaming-Laptop-16-wf1xxx:~/AOSP/Redmi note 7 pro/Android 13 Lineage 20$ git clone https://github.com/LineageOS/android_device_xiaomi_sm6150-common.git -b lineage-20 device/xiaomi/sm6150-common
-Cloning into 'device/xiaomi/sm6150-common'...
-remote: Enumerating objects: 24795, done.
-remote: Counting objects: 100% (2855/2855), done.
-remote: Compressing objects: 100% (457/457), done.
-remote: Total 24795 (delta 2609), reused 2398 (delta 2398), pack-reused 21940 (from 4)
-Receiving objects: 100% (24795/24795), 6.90 MiB | 3.09 MiB/s, done.
-Resolving deltas: 100% (16238/16238), done.
+# LineageOS 20 for Xiaomi Violet (Redmi Note 7 Pro)
 
-**********************************************************************************************************************************
+This repository provides the necessary information and steps to set up LineageOS 20 (Android 13) for the Xiaomi Redmi Note 7 Pro (codename: `violet`). The device tree, kernel, vendor blobs, and hardware configurations are all separated into individual repositories for better management and scalability. This repository contains just the `README.md` to guide you through the setup process.
 
-# Clone kernel
+## Prerequisites
 
-samir@samir-OMEN-by-HP-Gaming-Laptop-16-wf1xxx:~/AOSP/Redmi note 7 pro/Android 13 Lineage 20$ git clone https://github.com/LineageOS/android_kernel_xiaomi_sm6150.git -b lineage-20 kernel/xiaomi/sm6150
-Cloning into 'kernel/xiaomi/sm6150'...
-remote: Enumerating objects: 6475442, done.
-remote: Total 6475442 (delta 0), reused 0 (delta 0), pack-reused 6475442 (from 1)
-Receiving objects: 100% (6475442/6475442), 1.24 GiB | 2.12 MiB/s, done.
-Resolving deltas: 100% (5379234/5379234), done.
-Updating files: 100% (72349/72349), done.
-samir@samir-OMEN-by-HP-Gaming-Laptop-16-wf1xxx:~/AOSP/Redmi note 7 pro/Android 13 Lineage 20$ 
+Before you begin, make sure you have the following:
 
-// Not needed below
-// LineageOS kernel for android 13 is not available so cloning from pixel Experience and will modify for lineage 
+- A Linux-based OS (Ubuntu or similar recommended).
+- At least **100 GB** of free disk space.
+- A proper environment set up for building AOSP, including:
+  - Git
+  - Repo
+  - Java (OpenJDK 11)
+  - Python 2.7 or 3.x
+  - Other Android build dependencies (Check [AOSP build instructions](https://source.android.com/setup/build/requirements)).
 
-samir@samir-OMEN-by-HP-Gaming-Laptop-16-wf1xxx:~/AOSP/Redmi note 7 pro/Android 13 Lineage 20$ git clone https://github.com/PixelExperience-Devices/kernel_xiaomi_violet.git -b thirteen kernel/xiaomi/violet
-Cloning into 'kernel/xiaomi/violet'...
-remote: Enumerating objects: 6424210, done.
-remote: Counting objects: 100% (3621/3621), done.
-remote: Compressing objects: 100% (802/802), done.
-Receiving objects: 100% (6424210/6424210), 1.73 GiB | 2.39 MiB/s, done.
-remote: Total 6424210 (delta 2921), reused 3456 (delta 2814), pack-reused 6420589 (from 1)
-Resolving deltas: 100% (5169207/5169207), done.
-Updating files: 100% (70231/70231), done.
-samir@samir-OMEN-by-HP-Gaming-Laptop-16-wf1xxx:~/AOSP/Redmi note 7 pro/Android 13 Lineage 20$ 
+## Repositories
 
+This project is split across multiple Git repositories. The following repositories are used in this setup:
 
-**********************************************************************************************************************************
+1. **Device Tree**: `android_device_xiaomi_violet`  
+   - Contains device-specific configurations and setup for the Xiaomi Redmi Note 7 Pro.
 
-# Clone vendor blobs
+2. **Common Device Tree**: `android_device_xiaomi_sm6150-common`  
+   - Holds configurations that are shared among all Snapdragon 6150 devices.
 
-samir@samir-OMEN-by-HP-Gaming-Laptop-16-wf1xxx:~/AOSP/Redmi note 7 pro/Android 13 Lineage 20$ git clone https://github.com/xiaomi-sm6150/proprietary_vendor_xiaomi_violet.git -b lineage-20 vendor/xiaomi/violet
-Cloning into 'vendor/xiaomi/violet'...
-remote: Enumerating objects: 376, done.
-remote: Counting objects: 100% (11/11), done.
-remote: Compressing objects: 100% (9/9), done.
-remote: Total 376 (delta 3), reused 2 (delta 2), pack-reused 365 (from 2)
-Receiving objects: 100% (376/376), 156.14 MiB | 1.64 MiB/s, done.
-Resolving deltas: 100% (172/172), done.
-Updating files: 100% (330/330), done.
-samir@samir-OMEN-by-HP-Gaming-Laptop-16-wf1xxx:~/AOSP/Redmi note 7 pro/Android 13 Lineage 20$ 
+3. **Kernel**: `android_kernel_xiaomi_sm6150`  
+   - The kernel source for the Snapdragon 6150.
 
+4. **Vendor Blobs**: `proprietary_vendor_xiaomi_violet`  
+   - Contains proprietary blobs specific to the Xiaomi Redmi Note 7 Pro.
 
-samir@samir-OMEN-by-HP-Gaming-Laptop-16-wf1xxx:~/AOSP/Redmi note 7 pro/Android 13 Lineage 20$ git clone https://github.com/xiaomi-sm6150/proprietary_vendor_xiaomi_sm6150-common.git -b lineage-20 vendor/xiaom
-i/sm6150-common
-Cloning into 'vendor/xiaomi/sm6150-common'...
-remote: Enumerating objects: 1223, done.
-remote: Counting objects: 100% (26/26), done.
-remote: Compressing objects: 100% (21/21), done.
-remote: Total 1223 (delta 6), reused 8 (delta 5), pack-reused 1197 (from 3)
-Receiving objects: 100% (1223/1223), 166.31 MiB | 855.00 KiB/s, done.
-Resolving deltas: 100% (431/431), done.
-samir@samir-OMEN-by-HP-Gaming-Laptop-16-wf1xxx:~/AOSP/Redmi note 7 pro/Android 13 Lineage 20$ 
+5. **Vendor Common Blobs**: `proprietary_vendor_xiaomi_sm6150-common`  
+   - Contains common proprietary blobs for Snapdragon 6150 devices.
 
-**********************************************************************************************************************************
+6. **Hardware**: `android_hardware_xiaomi`  
+   - Includes hardware-specific configurations for Xiaomi devices.
 
-# Clone hardware Xiaomi
+## Setting Up the Project
 
-samir@samir-OMEN-by-HP-Gaming-Laptop-16-wf1xxx:~/AOSP/Redmi note 7 pro/Android 13 Lineage 20$ git clone https://github.com/LineageOS/android_hardware_xiaomi.git -b lineage-20 hardware/xiaomi
-Cloning into 'hardware/xiaomi'...
-remote: Enumerating objects: 1645, done.
-remote: Counting objects: 100% (27/27), done.
-remote: Compressing objects: 100% (9/9), done.
-remote: Total 1645 (delta 21), reused 18 (delta 18), pack-reused 1618 (from 2)
-Receiving objects: 100% (1645/1645), 407.45 KiB | 2.75 MiB/s, done.
-Resolving deltas: 100% (877/877), done.
-samir@samir-OMEN-by-HP-Gaming-Laptop-16-wf1xxx:~/AOSP/Redmi note 7 pro/Android 13 Lineage 20$ 
+Follow the steps below to clone the repositories and set up your local AOSP tree:
 
+### 1. Initialize the Repo
 
+Start by initializing the repo for your AOSP build:
 
+```bash
+repo init -u https://android.googlesource.com/platform/manifest -b android-13.0.0_r40
+```
 
+### 2. Clone Device, Kernel, Vendor, and Hardware Repositories
 
-To fix compilation errors edited below files
+Now clone the necessary repositories:
 
+#### Clone Device Tree
 
+```bash
+git clone https://github.com/LineageOS/android_device_xiaomi_violet.git -b lineage-20 device/xiaomi/violet
+```
 
+#### Clone Common Device Tree
 
+```bash
+git clone https://github.com/LineageOS/android_device_xiaomi_sm6150-common.git -b lineage-20 device/xiaomi/sm6150-common
+```
 
+#### Clone Kernel
+
+```bash
+git clone https://github.com/LineageOS/android_kernel_xiaomi_sm6150.git -b lineage-20 kernel/xiaomi/sm6150
+```
+
+#### Clone Vendor Blobs
+
+```bash
+git clone https://github.com/xiaomi-sm6150/proprietary_vendor_xiaomi_violet.git -b lineage-20 vendor/xiaomi/violet
+```
+
+#### Clone Common Vendor Blobs
+
+```bash
+git clone https://github.com/xiaomi-sm6150/proprietary_vendor_xiaomi_sm6150-common.git -b lineage-20 vendor/xiaomi/sm6150-common
+```
+
+#### Clone Hardware Xiaomi
+
+```bash
+git clone https://github.com/LineageOS/android_hardware_xiaomi.git -b lineage-20 hardware/xiaomi
+```
+
+### 3. Set Up Submodules (If Necessary)
+
+If your project is using submodules, make sure to initialize them with:
+
+```bash
+git submodule init
+git submodule update
+```
+
+### 4. Build the AOSP
+
+Once all repositories are cloned, it's time to set up the build environment and start building:
+
+#### Source the Build Environment
+
+```bash
+source build/envsetup.sh
+```
+
+#### Choose the Device
+
+```bash
+lunch lineage_violet-userdebug
+```
+
+#### Start the Build
+
+```bash
+make -j$(nproc --all)
+```
+
+This will begin building your AOSP-based LineageOS 20 for the Xiaomi Redmi Note 7 Pro.
+
+## Troubleshooting
+
+If you encounter any issues, here are some tips:
+
+- Make sure all dependencies are installed and up-to-date.
+- Double-check your repository URLs and branches.
+- Ensure you have enough disk space, as the build can consume a large amount of space.
+
+For further help, you can consult the [LineageOS Wiki](https://wiki.lineageos.org/) or the relevant device-specific forums.
+
+## License
+
+This project uses the AOSP code, which is licensed under the Apache License, Version 2.0. Please refer to the individual repositories for their respective licenses.
+
+---
+
+Feel free to modify and extend this `README.md` as needed for your project or if you need to include additional setup details!
