@@ -1,7 +1,3 @@
-Here’s a proper `README.md` file that you can use for your repository. It provides a comprehensive guide for others to follow and replicate the steps for setting up the same environment:
-
----
-
 # LineageOS 20 for Xiaomi Violet (Redmi Note 7 Pro)
 
 This repository provides the necessary information and steps to set up LineageOS 20 (Android 13) for the Xiaomi Redmi Note 7 Pro (codename: `violet`). The device tree, kernel, vendor blobs, and hardware configurations are all separated into individual repositories for better management and scalability. This repository contains just the `README.md` to guide you through the setup process.
