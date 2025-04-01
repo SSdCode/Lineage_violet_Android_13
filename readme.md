@@ -43,10 +43,10 @@ Follow the steps below to clone the repositories and set up your local AOSP tree
 
 ### 1. Initialize the Repo
 
-Start by initializing the repo for your AOSP build:
+Start by initializing the repo for your Lineage AOSP build:
 
 ```bash
-repo init -u https://android.googlesource.com/platform/manifest -b android-13.0.0_r40
+repo init -u https://github.com/LineageOS/android.git -b lineage-20.0 --git-lfs
 ```
 
 ### 2. Clone Device, Kernel, Vendor, and Hardware Repositories
